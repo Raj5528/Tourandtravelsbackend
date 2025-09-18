@@ -10,7 +10,7 @@ app.use(express.static(__dirname+"/public/"))
 
 const Adminroutes=require('./routes/AdminRoutes')
 app.get("/",(req,res)=>{
-  res.send("Travel server")
+  res.send("Hello this is the backend of my Travel server")
 })
 app.use('/admin',Adminroutes)
 
