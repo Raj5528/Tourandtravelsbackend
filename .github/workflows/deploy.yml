@@ -1,0 +1,19 @@
+name: Deploy Backend via GitHub Runner
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull & restart backend
+        run: |
+          cd ~/Tourandtravelsbackend
+          git fetch --all
+          git reset --hard origin/main
+          npm install
+          pm2 restart backend || pm2 start index.js --name backend
+          pm2 save
